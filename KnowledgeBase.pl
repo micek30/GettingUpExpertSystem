@@ -1,1 +1,36 @@
-dfsdfs;
+nauczyciel(drzymala).
+nauczyciel(marciniak).
+nauczyciel(welfle).
+nauczyciel(kaminska).
+
+przedmiot(rbd).
+przedmiot(android).
+przedmiot(dotNet).
+przedmiot(se).
+
+typ(wyklad).
+typ(laboratorium).
+
+nauczycielPrzedmiot(drzymala,rbd,laboratorium).
+nauczycielPrzedmiot(marciniak,android,laboratorium).
+nauczycielPrzedmiot(marciniak,android,wyklad).
+nauczycielPrzedmiot(welfle,bazyDotNet,laboratorium).
+nauczycielPrzedmiot(kaminska,se,wyklad).
+
+dobryNauczyciel(welfle).
+dobryNauczyciel(was).
+
+jestLista(android).
+
+dobryPrzedmiot(se,kaminska).
+dobryPrzedmiot(bazyDotNet,welfle).
+
+ludzkaGodzina(X):-X>9.
+
+maxNieobecnych(X):-X>2.
+
+wartoNaWyklad(X,Y):-nauczycielPrzedmiot(Z,X,wyklad), dobryPrzedmiot(X,Z),ludzkaGodzina(Y);jestLista(X).
+wartoNaLabki(X,Y,Z):-nauczycielPrzedmiot(Q,X,laboratorium),dobryPrzedmiot(X,Q),ludzkaGodzina(Y);maxNieobecnych(Z).
+
+wartoWstac(X,V,Y,Z):- V='wyklad',wartoNaWyklad(X,Y); V='laboratorium',wartoNaLabki(X,Y,Z).
+
